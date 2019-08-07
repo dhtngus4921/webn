@@ -4,17 +4,12 @@
   <title>TRAVEL1-Explanation</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
+  <script src="colors.js"> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
   <h1><a href="index.html"style="color:lightpink">TRAVEL</a></h1>
-  <input type="button" value="night" onclick="
-    document.querySelector('body').style.backgroundColor='darkgray';
-    document.querySelector('body').style.color='white';
-  ">
-  <input type="button" value="day" onclick="
-    document.querySelector('body').style.backgroundColor='white';
-    document.querySelector('body').style.color='black';
-  ">
 <div id="grid">
     <ol>
       <li><a href="hongkong.html">Hongkong</a></li>
@@ -25,10 +20,13 @@
   <div id="article">
     <h2>Explanation</h2>
     <p>
-      도착을 하고나서야 우리가 어디를 향해서 걸어온 것인지 알게된다<br>-Bill Watterson-<br>
       <img src="travel.jpg" width="50%">
     </p>
   </div>
 </div>
+
+<input id="night_day" type="button" value="night" onclick="
+  nightDayhandler(this);
+">
 </body>
 </html>
