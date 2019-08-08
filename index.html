@@ -18,24 +18,24 @@
     // Now that we've initialized the JavaScript SDK, we call
     // FB.getLoginStatus().  This function gets the state of the
     // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
+    // the checkLoginStatus you provide.  They can be:
     //
     // 1. Logged into your app ('connected')
     // 2. Logged into Facebook, but not your app ('not_authorized')
     // 3. Not logged into Facebook and can't tell if they are logged into
     //    your app or not.
     //
-    // These three cases are handled in the callback function.
-    var callback=function(response){
-      console.log(response);
-      if(response.status==='connected'){
-        document.querySelector('#authBtn').value='Logout';
-      }else{
-        document.querySelector('#authBtn').value='Login';
-      }
-    }
-    FB.getLoginStatus(callback);
+    // These three cases are handled in the checkLoginStatus function.
+    FB.getLoginStatus(checkLoginStatus);
   };
+  var checkLoginStatus=function(response){
+    console.log(response);
+    if(response.status==='connected'){
+      document.querySelector('#authBtn').value='Logout';
+    }else{
+      document.querySelector('#authBtn').value='Login';
+    }
+  }
       // Load the SDK asynchronously
     (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -51,11 +51,13 @@
     if(this.value==='Login'){
       FB.login(function(res){
         console.log('login=>',res);
-      })
+        checkLoginStatus(res);
+      });
     }else{
       FB.logout(function(res){
         console.log('logout=>',res);
-      })
+        checkLoginStatus(res);
+      });
     }
   ">
   <h1><a href="index.html"style="color:lightpink">TRAVEL</a></h1>
