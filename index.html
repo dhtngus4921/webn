@@ -11,10 +11,11 @@
       if(response.status==='connected'){
         document.querySelector('#authBtn').value='Logout';
         FB.api('/me',function(resp){
-	      document.querySelector('#name').innerHTML=resp.name;
+	      document.querySelector('#name').innerHTML='Welcome'+resp.name;
       });
       }else{
         document.querySelector('#authBtn').value='Login';
+        document.querySelector('#name').innerHTML=' ';
       }
     }
     window.fbAsyncInit = function() {
@@ -63,7 +64,7 @@
         checkLoginStatus(res);
       });
     }
-  ">,<div id="name"></div>
+  "> <span id="name"></span>
   <h1><a href="index.html"style="color:lightpink">TRAVEL</a></h1>
   <div id="grid">
     <ol>
